@@ -1,0 +1,31 @@
+<h2>User List</h2>
+
+<table class="user-table">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let u of users">
+    <td>{{ u.id }}</td>
+    <td>{{ u.name }}</td>
+    <td>{{ u.email }}</td>
+    <td>{{ u.age }}</td>
+    <td>
+      <button class="delete-btn" (click)="deleteUser(u.id!)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<h3>Add New User</h3>
+
+<form class="add-form" (submit)="addUser(); $event.preventDefault()">
+  <input type="text" placeholder="Name" [(ngModel)]="newUser.name" name="name" required>
+  <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
+  <input type="number" placeholder="Age" [(ngModel)]="newUser.age" name="age" required>
+  <button type="submit">Add User</button>
+</form>
+
